@@ -1,5 +1,9 @@
 // Librerías
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+// Archivos Externos
+import 'Utilidades/Constantes.dart';
 
 // Función Principal
 void main() => runApp(Aplicacion());
@@ -8,23 +12,15 @@ void main() => runApp(Aplicacion());
 class Aplicacion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Inter Activo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: PaginaInicial(),
-    );
-  }
-}
+    // Color de Barra de Estado
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: colorAzulOpaco));
 
-// Clase Página Inicial
-class PaginaInicial extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('InterActivo')),
-      body: Center(
-        child: Text('InterActivo'),
-      ),
+    // Aplicación
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'InterActivo',
+      initialRoute: 'Pruebas',
+      routes: mapaRutas,
     );
   }
 }
