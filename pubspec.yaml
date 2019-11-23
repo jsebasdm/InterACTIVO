@@ -9,6 +9,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  font_awesome_flutter: 8.5.0
+  line_icons: ^0.2.0
+  outline_material_icons: 0.1.1
+  material_design_icons_flutter: 3.4.4595
 
 dev_dependencies:
   flutter_test:

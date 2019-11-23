@@ -26,10 +26,7 @@ class PaginaPruebas extends StatelessWidget {
       ),
       bottomNavigationBar: Menu(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
-      ),
+      floatingActionButton: FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}),
     );
   }
 }

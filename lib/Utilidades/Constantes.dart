@@ -10,7 +10,7 @@ import 'package:interactivo/Paginas/PaginaSplash.dart';
 import 'package:interactivo/Paginas/PaginaPruebas.dart';
 
 // Mapa de Rutas
-final Map<String, StatelessWidget Function(BuildContext contexto)> mapaRutas = {
+final Map<String, Widget Function(BuildContext contexto)> mapaRutas = {
   'Splash': (BuildContext contexto) => PaginaSplash(),
   'Ingreso': (BuildContext contexto) => PaginaIngreso(),
   'Formulario': (BuildContext contexto) => PaginaFormulario(),
@@ -25,5 +25,5 @@ const Color colorAzulOpaco = Color(0xFF003B4B);
 const Color colorGrisAzulado = Color(0xFF293742);
 
 // Estilos Texto
-const TextStyle estiloNombreColaborador = TextStyle(fontSize: 14, fontFamily: 'Roboto', color: Colors.black);
-const TextStyle estiloCargoColaborador = TextStyle(fontSize: 12, fontFamily: 'Roboto', color: Colors.grey);
+const TextStyle estiloNombreColaborador = TextStyle(fontSize: 16, fontFamily: 'Roboto', color: Colors.white);
+const TextStyle estiloCargoColaborador = TextStyle(fontSize: 14, fontFamily: 'Roboto', color: Colors.grey);

@@ -19,7 +19,7 @@ class Aplicacion extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'InterActivo',
-      initialRoute: 'Pruebas',
+      initialRoute: 'Splash',
       routes: mapaRutas,
     );
   }

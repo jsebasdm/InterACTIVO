@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 // Archivos Externos
 import 'package:interactivo/Utilidades/Constantes.dart';
 
+// Clase Enumerada Auxiliar
+enum ParteLogo { Superior, Inferior, Completo }
+
 // Clase
 class LogoInterGrupo extends StatelessWidget {
   // Atributos
@@ -14,6 +17,7 @@ class LogoInterGrupo extends StatelessWidget {
   final double tamagnoLetra;
   final Color colorFondo;
   final Color colorLetra;
+  final ParteLogo parte;
 
   // Constructor
   LogoInterGrupo({
@@ -21,8 +25,9 @@ class LogoInterGrupo extends StatelessWidget {
     this.textoAbajo = 'Grupo',
     this.tamagnoCuadro = 48,
     this.tamagnoLetra = 13,
-    this.colorFondo = colorAzulClaro,
+    this.colorFondo = colorAzulOpaco,
     this.colorLetra = Colors.white,
+    this.parte = ParteLogo.Completo,
   });
 
   // Método Auxiliar Textos
@@ -40,21 +45,30 @@ class LogoInterGrupo extends StatelessWidget {
     );
   }
 
+  Widget contenedorLogo({Widget hijo, double alto, Alignment alineacion}) {
+    Widget elementoAlineado = Align(child: hijo, alignment: alineacion);
+    return Container(color: colorFondo, width: tamagnoCuadro, height: alto, child: elementoAlineado);
+  }
+
   // Método Contenido Gráfico
   @override
   Widget build(BuildContext contexto) {
-    return Container(
-      color: colorFondo,
-      width: tamagnoCuadro,
-      height: tamagnoCuadro,
-      child: Column(
+    // Parte Superior
+    Widget textoSuperior = crearTexto(textoArriba, tamagnoLetra, espaciado: 1);
+    if (parte == ParteLogo.Superior)
+      return contenedorLogo(hijo: textoSuperior, alto: tamagnoCuadro / 2, alineacion: Alignment.bottomCenter);
+
+    // Parte Inferior
+    Widget textoInferior = crearTexto(textoAbajo, tamagnoLetra - 2, espaciado: 0);
+    if (parte == ParteLogo.Inferior)
+      return contenedorLogo(hijo: textoInferior, alto: tamagnoCuadro / 2, alineacion: Alignment.topCenter);
+
+    // Logo Completo
+    Widget columnaTextos = Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          crearTexto(textoArriba, tamagnoLetra, espaciado: 1),
-          crearTexto(textoAbajo, tamagnoLetra - 2, espaciado: 0),
-        ],
-      ),
+        children: <Widget>[textoSuperior, textoInferior]
     );
+    return contenedorLogo(alto: tamagnoCuadro, alineacion: Alignment.center, hijo: columnaTextos);
   }
+
 }
