@@ -6,17 +6,12 @@ import 'package:interactivo/Componentes/BarraSuperior.dart';
 import 'package:interactivo/Componentes/Menu.dart';
 
 // Clase Página
-class PaginaGaleria extends StatefulWidget {
-  EstadoPaginaGaleria createState() => EstadoPaginaGaleria();
-}
-
-// Estado Página Ingreso
-class EstadoPaginaGaleria extends State<PaginaGaleria> {
+class PaginaLista extends StatelessWidget {
   // ELEMENTOS GRÁFICOS
   // Contenido Principal de Página
   Widget contenidoPagina() {
     return Center(
-      child: Text('Contenido de Galeria'),
+      child: Text('Contenido de Formulario'),
     );
   }
 
@@ -32,8 +27,8 @@ class EstadoPaginaGaleria extends State<PaginaGaleria> {
       bottomNavigationBar: Menu(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add), 
-        onPressed: () => Navigator.pushNamed(context, 'Formulario'),
+        child: const Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }

@@ -8,7 +8,7 @@ class Menu extends StatelessWidget {
     return BottomAppBar(
       shape: CircularNotchedRectangle(),
       color: colorAzulOpaco,
-      notchMargin: 4.0,
+      notchMargin: 8.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,

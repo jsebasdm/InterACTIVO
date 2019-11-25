@@ -3,22 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Archivos Externos
-import 'Utilidades/Constantes.dart';
+import 'package:interactivo/Utilidades/Constantes.dart';
 
 // Función Principal
 void main() => runApp(Aplicacion());
 
 // Clase Aplicación
 class Aplicacion extends StatelessWidget {
-  @override
+  // Método Contenido Gráfico
   Widget build(BuildContext context) {
-    // Color de Barra de Estado
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: colorAzulOpaco));
+    // Color Barra de Estado
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: colorGrisAzulado));
 
     // Aplicación
     return MaterialApp(
+      theme: ThemeData(primaryColor: colorAzulOpaco, cursorColor: colorAzulOpaco),
       debugShowCheckedModeBanner: false,
-      title: 'InterActivo',
+      title: 'Pruebas Reto',
       initialRoute: 'Splash',
       routes: mapaRutas,
     );

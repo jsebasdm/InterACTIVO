@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 // Archivos Externos
 import 'package:interactivo/Componentes/BarraSuperior.dart';
 import 'package:interactivo/Componentes/Menu.dart';
+import 'package:interactivo/Componentes/SeleccionNivel.dart';
 
 // Clase Página
 class PaginaFormulario extends StatelessWidget {
   // ELEMENTOS GRÁFICOS
   // Contenido Principal de Página
   Widget contenidoPagina() {
-    return Center(
-      child: Text('Contenido de Formulario'),
-    );
+    return SeleccionNivel();
   }
 
   // Método Contenido Gráfico

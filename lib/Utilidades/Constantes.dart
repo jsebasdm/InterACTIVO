@@ -23,7 +23,15 @@ final Map<String, Widget Function(BuildContext contexto)> mapaRutas = {
 const Color colorAzulClaro = Color(0xFF00AFEE);
 const Color colorAzulOpaco = Color(0xFF003B4B);
 const Color colorGrisAzulado = Color(0xFF293742);
+const Color colorValidaciones = Color(0xFFB71C1C);
+final HSLColor colorHslAbanico = HSLColor.fromColor(colorAzulClaro);
 
 // Estilos Texto
-const TextStyle estiloNombreColaborador = TextStyle(fontSize: 16, fontFamily: 'Roboto', color: Colors.white);
-const TextStyle estiloCargoColaborador = TextStyle(fontSize: 14, fontFamily: 'Roboto', color: Colors.grey);
+const TextStyle estiloCampos = TextStyle(fontFamily: 'Roboto', fontSize: 18, color: colorAzulOpaco);
+const TextStyle estiloNombreColaborador = TextStyle(fontFamily: 'Roboto', fontSize: 17, color: Colors.white);
+const TextStyle estiloCargoColaborador =
+    TextStyle(fontFamily: 'Roboto', fontSize: 15, color: Colors.white70, fontStyle: FontStyle.italic);
+const TextStyle estiloValidaciones =
+    TextStyle(fontFamily: 'Roboto', fontSize: 16, color: colorValidaciones, fontStyle: FontStyle.italic);
+const TextStyle estiloBoton =
+    TextStyle(fontFamily: 'Roboto', fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold);

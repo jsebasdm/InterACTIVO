@@ -3,7 +3,7 @@ description: Aplicación de Reto de ExperTIC, con InterGrupo como empresa mentor
 version: 1.0.0
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -11,8 +11,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   font_awesome_flutter: 8.5.0
   line_icons: ^0.2.0
-  outline_material_icons: 0.1.1
-  material_design_icons_flutter: 3.4.4595
+  flutter_svg: ^0.15.0
+  after_layout: ^1.0.7
+  flare_flutter: ^1.7.3
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +23,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/imagenes/
+    - assets/graficos/
+    - assets/animaciones/
+    - assets/animaciones/PersonajePodio.flr
+    - assets/imagenes/imagenespodio/
+    - assets/imagenes/medallas/
