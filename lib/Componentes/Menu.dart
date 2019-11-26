@@ -13,7 +13,7 @@ class Menu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          IconButton(icon: Icon(LineIcons.angellist, color: Colors.white), onPressed: () {}),
+          IconButton(icon: Image(image: AssetImage('assets/imagenes/IconoCarrusel.png'), height: 22, width: 22,), onPressed: () {}),
           IconButton(icon: Icon(LineIcons.list, color: Colors.white), onPressed: () {}),
         ],
       ),

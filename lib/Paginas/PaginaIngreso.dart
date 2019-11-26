@@ -15,14 +15,14 @@ class PaginaIngreso extends StatefulWidget {
 // Estado Página Ingreso
 class EstadoPaginaIngreso extends State<PaginaIngreso> {
   // Método Navegar Galería (Tras Login Exitoso)
-  void navegarPaginaGaleria() => Navigator.pushNamed(context, 'Galeria');
+  void navegarPaginaPrimerHabilidad() => Navigator.pushNamed(context, 'HabilidadUno');
 
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     // Lista Elementos Página
     final columnaElementos = Column(
       mainAxisSize: MainAxisSize.max,
-      children: [StackIconosLogin(), SizedBox(height: 60), FormularioLogin(navegarLoginExitoso: navegarPaginaGaleria)],
+      children: [StackIconosLogin(), SizedBox(height: 60), FormularioLogin(navegarLoginExitoso: navegarPaginaPrimerHabilidad)],
     );
     // Scaffold Página
     final vistaDeslizable = Center(child: SingleChildScrollView(child: columnaElementos, padding: EdgeInsets.all(20)));

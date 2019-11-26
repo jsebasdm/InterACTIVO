@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 
 // Archivos Externos
 import 'package:interactivo/Componentes/BarraSuperior.dart';
-import 'package:interactivo/Componentes/Menu.dart';
-
-import 'package:interactivo/Componentes/SeleccionNivel.dart';
+import 'package:interactivo/Componentes/PrimerFormulario.dart';
 
 // Clase Página
-class PaginaFormulario extends StatelessWidget {
+class PaginaPrimerHabilidad extends StatelessWidget {
   // ELEMENTOS GRÁFICOS
   // Contenido Principal de Página
   Widget contenidoPagina() {
-    return SeleccionNivel();
+    return PrimerFormulario();
   }
 
   // Método Contenido Gráfico
@@ -23,12 +21,6 @@ class PaginaFormulario extends StatelessWidget {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[BarraSuperior(), Expanded(child: contenidoPagina())]),
-      ),
-      bottomNavigationBar: Menu(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
       ),
     );
   }

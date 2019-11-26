@@ -20,16 +20,18 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   double opacidadNivel1 = 0.0;
   double opacidadNivel2 = 0.0;
   double opacidadNivel3 = 0.0;
-  String animacion1 = 'PrimerPuesto';
-  String animacion2 = 'SegundoPuesto';
-  String animacion3 = 'TercerPuesto';
-  String medallaOro = 'assets/imagenes/medallas/MedallaOro.png';
-  String medallaPlata = 'assets/imagenes/medallas/MedallaPlata.png';
-  String medallaBronce = 'assets/imagenes/medallas/MedallaBronce.png';
+  final animacion1 = 'PrimerPuesto';
+  final animacion2 = 'SegundoPuesto';
+  final animacion3 = 'TercerPuesto';
+  final medallaOro = 'assets/imagenes/medallas/MedallaOro.png';
+  final medallaPlata = 'assets/imagenes/medallas/MedallaPlata.png';
+  final medallaBronce = 'assets/imagenes/medallas/MedallaBronce.png';
+  double dimensionBotonOro = 60.0;
+  double dimensionBotonPlata = 60.0;
+  double dimensionBotonBronce = 60.0;
 
-  void _onClicked(int level) {
+  void _accionSeleccionNivel(int level) {
     setState(() {
-      //debugPrint('nivel $level');
       if (level == 1) {
         imagen1 = 'assets/imagenes/imagenespodio/Podio1Activo.jpg';
         imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
@@ -37,6 +39,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 1.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 0.0;
+        dimensionBotonOro = 70.0;
+        dimensionBotonPlata = 60.0;
+        dimensionBotonBronce = 60.0;
       } else if (level == 2) {
         imagen1 = 'assets/imagenes/imagenespodio/Podio12Activo.jpg';
         imagen2 = 'assets/imagenes/imagenespodio/Podio2Activo.jpg';
@@ -44,6 +49,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 1.0;
         opacidadNivel3 = 0.0;
+        dimensionBotonOro = 60.0;
+        dimensionBotonPlata = 70.0;
+        dimensionBotonBronce = 60.0;
       } else if (level == 3) {
         imagen1 = 'assets/imagenes/imagenespodio/Podio13Activo.jpg';
         imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
@@ -51,20 +59,11 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 1.0;
+        dimensionBotonOro = 60.0;
+        dimensionBotonPlata = 60.0;
+        dimensionBotonBronce = 70.0;
       }
     });
-  }
-
-  Widget construccionPodio(String imagen, double anchoImagen,
-      double alturaImagen, int nivel, double opacidad, String animacion) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        construccionAnimacion(opacidad, animacion),
-        constuccionImagenPodio(imagen, nivel, anchoImagen, alturaImagen)
-      ],
-    );
   }
 
   Widget constuccionImagenPodio(
@@ -80,7 +79,7 @@ class _SeleccionNivel extends State<SeleccionNivel> {
       child: FlatButton(
         padding: EdgeInsets.all(0.0),
         onPressed: () {
-          _onClicked(nivel);
+          _accionSeleccionNivel(nivel);
         },
         child: null,
       ),
@@ -104,22 +103,66 @@ class _SeleccionNivel extends State<SeleccionNivel> {
     );
   }
 
-  Widget botonesNivel(String medalla, int nivel) {
-    return ClipOval(
-      child: Container(
-        width: 70,
-        height: 70,
-        child: Material(
-          elevation: 20.0,
-          color: colorAzulOpaco,
-          shape: CircleBorder(),
-          child: MaterialButton(
-            child: Image(image: AssetImage(medalla), width: 50.0, height: 50.0),
-            onPressed: () {
-              _onClicked(nivel);
-            },
-          ),
+  Widget construccionPodio(String imagen, double anchoImagen,
+      double alturaImagen, int nivel, double opacidad, String animacion) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        construccionAnimacion(opacidad, animacion),
+        constuccionImagenPodio(imagen, nivel, anchoImagen, alturaImagen)
+      ],
+    );
+  }
+
+  Widget construccionBotonNivel(
+      String medalla, int nivel, double dimensionBoton) {
+    return Container(
+      width: dimensionBoton,
+      height: dimensionBoton,
+      child: MaterialButton(
+        elevation: 10.0,
+        color: colorAzulOpaco,
+        shape: CircleBorder(),
+        splashColor: Colors.white54,
+        child: Image(
+          image: AssetImage(medalla),
+          height: dimensionBoton-20,
+          width: dimensionBoton-20,
         ),
+        onPressed: () {
+          _accionSeleccionNivel(nivel);
+        },
+      ),
+    );
+  }
+
+  Widget podio() {
+    return Container(
+      width: 202,
+      height: 200,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          construccionPodio(imagen2, 62.8, 63.2, 2, opacidadNivel2, animacion2),
+          construccionPodio(imagen1, 79.0, 90.0, 1, opacidadNivel1, animacion1),
+          construccionPodio(imagen3, 60.0, 55.0, 3, opacidadNivel3, animacion3)
+        ],
+      ),
+    );
+  }
+
+  Widget botonesNivel() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          construccionBotonNivel(medallaPlata, 2, dimensionBotonPlata),
+          construccionBotonNivel(medallaOro, 1, dimensionBotonOro),
+          construccionBotonNivel(medallaBronce, 3, dimensionBotonBronce),
+        ],
       ),
     );
   }
@@ -134,33 +177,8 @@ class _SeleccionNivel extends State<SeleccionNivel> {
             padding: EdgeInsets.all(20),
             child: Column(
               children: <Widget>[
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      botonesNivel(medallaPlata, 2),
-                      botonesNivel(medallaOro, 1),
-                      botonesNivel(medallaBronce, 3),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 202,
-                  height: 200,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      construccionPodio(
-                          imagen2, 62.8, 63.2, 2, opacidadNivel2, animacion2),
-                      construccionPodio(
-                          imagen1, 79.0, 90.0, 1, opacidadNivel1, animacion1),
-                      construccionPodio(
-                          imagen3, 60.0, 55.0, 3, opacidadNivel3, animacion3)
-                    ],
-                  ),
-                ),
+                botonesNivel(),
+                podio(),
               ],
             ),
           ),
