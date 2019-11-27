@@ -25,6 +25,5 @@ flutter:
     - assets/imagenes/
     - assets/graficos/
     - assets/animaciones/
-    - assets/animaciones/PersonajePodio.flr
     - assets/imagenes/imagenespodio/
     - assets/imagenes/medallas/

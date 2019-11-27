@@ -26,9 +26,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   final medallaOro = 'assets/imagenes/medallas/MedallaOro.png';
   final medallaPlata = 'assets/imagenes/medallas/MedallaPlata.png';
   final medallaBronce = 'assets/imagenes/medallas/MedallaBronce.png';
-  double dimensionBotonOro = 60.0;
-  double dimensionBotonPlata = 60.0;
-  double dimensionBotonBronce = 60.0;
+  double dimensionBotonOro = 50.0;
+  double dimensionBotonPlata = 50.0;
+  double dimensionBotonBronce = 50.0;
 
   void _accionSeleccionNivel(int level) {
     setState(() {
@@ -39,9 +39,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 1.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 0.0;
-        dimensionBotonOro = 70.0;
-        dimensionBotonPlata = 60.0;
-        dimensionBotonBronce = 60.0;
+        dimensionBotonOro = 60.0;
+        dimensionBotonPlata = 50.0;
+        dimensionBotonBronce = 50.0;
       } else if (level == 2) {
         imagen1 = 'assets/imagenes/imagenespodio/Podio12Activo.jpg';
         imagen2 = 'assets/imagenes/imagenespodio/Podio2Activo.jpg';
@@ -49,9 +49,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 1.0;
         opacidadNivel3 = 0.0;
-        dimensionBotonOro = 60.0;
-        dimensionBotonPlata = 70.0;
-        dimensionBotonBronce = 60.0;
+        dimensionBotonOro = 50.0;
+        dimensionBotonPlata = 60.0;
+        dimensionBotonBronce = 50.0;
       } else if (level == 3) {
         imagen1 = 'assets/imagenes/imagenespodio/Podio13Activo.jpg';
         imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
@@ -59,9 +59,9 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 1.0;
-        dimensionBotonOro = 60.0;
-        dimensionBotonPlata = 60.0;
-        dimensionBotonBronce = 70.0;
+        dimensionBotonOro = 50.0;
+        dimensionBotonPlata = 50.0;
+        dimensionBotonBronce = 60.0;
       }
     });
   }
@@ -156,11 +156,13 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   Widget botonesNivel() {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           construccionBotonNivel(medallaPlata, 2, dimensionBotonPlata),
+          SizedBox(width: 20),
           construccionBotonNivel(medallaOro, 1, dimensionBotonOro),
+          SizedBox(width: 20),
           construccionBotonNivel(medallaBronce, 3, dimensionBotonBronce),
         ],
       ),

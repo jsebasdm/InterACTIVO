@@ -40,5 +40,5 @@ const TextStyle estiloValidaciones =
     TextStyle(fontFamily: 'Roboto', fontSize: 16, color: colorValidaciones, fontStyle: FontStyle.italic);
 const TextStyle estiloBoton =
     TextStyle(fontFamily: 'Roboto', fontSize: 20, color: Colors.white);
-const TextStyle estilohabil = TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black, fontStyle: FontStyle.italic);
-const TextStyle estilohabilidad = TextStyle(fontFamily: 'Roboto', fontSize: 25,color: Colors.black);
+const TextStyle estilohabil = TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold, fontSize: 35, color: Colors.black);
+const TextStyle estilohabilidad = TextStyle(fontFamily: 'Roboto', fontSize: 10,color: Colors.white);
