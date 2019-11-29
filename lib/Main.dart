@@ -7,7 +7,7 @@ import 'package:interactivo/Utilidades/Constantes.dart';
 import 'package:interactivo/Modelos/Registro.dart';
 
 // Variables Globales
-final listaRegistros = Registro.obtenerListaPrueba();
+List<Registro> listaRegistros = Registro.obtenerListaPrueba();
 
 // Función Principal
 void main() => runApp(Aplicacion());

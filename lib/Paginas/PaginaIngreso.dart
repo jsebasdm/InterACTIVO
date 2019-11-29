@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:line_icons/line_icons.dart';
 
-
 // Archivos Externos
 import 'package:interactivo/Paginas/PlantillaPagina.dart';
 import 'package:interactivo/Utilidades/Constantes.dart';
+import 'package:interactivo/Componentes/BotonFormulario.dart';
 
 // Clase Página Ingreso
 class PaginaIngreso extends StatelessWidget {
@@ -102,21 +102,6 @@ class CampoFormulario extends StatelessWidget {
     );
     return TextFormField(
         validator: validacion, style: estiloCampos, keyboardType: teclado, decoration: decoracion, obscureText: oculto);
-  }
-}
-
-// Clase Botón Ingresar Formulario
-class BotonIngresar extends StatelessWidget {
-  // Atributos
-  final Function clickBoton;
-  // Constructor
-  BotonIngresar({this.clickBoton});
-  // Método Contenido Gráfico
-  Widget build(BuildContext context) {
-    final textoBoton = Text("Ingresar", textAlign: TextAlign.center, style: estiloBotonIngresar);
-    final interiorBoton = MaterialButton(onPressed: clickBoton, child: textoBoton);
-    final radioBorde = BorderRadius.circular(10);
-    return Material(elevation: 5, borderRadius: radioBorde, color: colorAzulOpaco, child: interiorBoton);
   }
 }
 
@@ -223,7 +208,7 @@ class EstadoFormularioLogin extends State<FormularioLogin> {
 
     // Elementos Entrada: Switch y Botón Ingresar
     final filaSwitch = SwitchRecordarme(activo: recordarme, funcionClickSwitch: clickSwitch);
-    final botonIngresar = BotonIngresar(clickBoton: clickBoton);
+    final botonIngresar = BotonFormulario(clickBoton: clickBoton, texto: 'Ingresar');
 
     // Lista Elementos Formulario
     final listaElementos = [

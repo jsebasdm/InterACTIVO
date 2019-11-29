@@ -7,13 +7,14 @@ import 'package:interactivo/Utilidades/Constantes.dart';
 
 // Clase Página
 class SeleccionNivel extends StatefulWidget {
-  @override
-  _SeleccionNivel createState() => new _SeleccionNivel();
+  final Function funcionCambioNivel;
+  SeleccionNivel({this.funcionCambioNivel});
+  EstadoSeleccionNivel createState() => new EstadoSeleccionNivel();
 }
 
 // ELEMENTOS GRÁFICOS
 // Contenido Principal de Página
-class _SeleccionNivel extends State<SeleccionNivel> {
+class EstadoSeleccionNivel extends State<SeleccionNivel> {
   String imagen1 = 'assets/imagenes/podio/Podio1Inactivo.jpg';
   String imagen2 = 'assets/imagenes/podio/Podio2Inactivo.jpg';
   String imagen3 = 'assets/imagenes/podio/Podio3Inactivo.jpg';
@@ -32,8 +33,10 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   Color colorBotonOro = Colors.blueGrey[50];
   Color colorBotonPlata = Colors.blueGrey[50];
   Color colorBotonBronce = Colors.blueGrey[50];
+  String valor;
 
   void _accionSeleccionNivel(int nivel) {
+    widget.funcionCambioNivel(nivel);
     setState(() {
       if (nivel == 1) {
         imagen1 = 'assets/imagenes/podio/Podio1Activo.jpg';
@@ -48,6 +51,7 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         colorBotonOro = colorAzulOpaco;
         colorBotonPlata = Colors.blueGrey[50];
         colorBotonBronce = Colors.blueGrey[50];
+        valor = 'Alto';
       } else if (nivel == 2) {
         imagen1 = 'assets/imagenes/podio/Podio12Activo.jpg';
         imagen2 = 'assets/imagenes/podio/Podio2Activo.jpg';
@@ -61,6 +65,7 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         colorBotonOro = Colors.blueGrey[50];
         colorBotonPlata = colorAzulOpaco;
         colorBotonBronce = Colors.blueGrey[50];
+        valor = 'Medio';
       } else if (nivel == 3) {
         imagen1 = 'assets/imagenes/podio/Podio13Activo.jpg';
         imagen2 = 'assets/imagenes/podio/Podio2Inactivo.jpg';
@@ -74,12 +79,12 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         colorBotonOro = Colors.blueGrey[50];
         colorBotonPlata = Colors.blueGrey[50];
         colorBotonBronce = colorAzulOpaco;
+        valor = 'Bajo';
       }
     });
   }
 
-  Widget constuccionImagenPodio(
-      String imagen, int nivel, double anchoImagen, double alturaImagen) {
+  Widget constuccionImagenPodio(String imagen, int nivel, double anchoImagen, double alturaImagen) {
     return Container(
       width: anchoImagen,
       height: alturaImagen,
@@ -115,8 +120,8 @@ class _SeleccionNivel extends State<SeleccionNivel> {
     );
   }
 
-  Widget construccionPodio(String imagen, double anchoImagen,
-      double alturaImagen, int nivel, double opacidad, String animacion) {
+  Widget construccionPodio(
+      String imagen, double anchoImagen, double alturaImagen, int nivel, double opacidad, String animacion) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -127,8 +132,7 @@ class _SeleccionNivel extends State<SeleccionNivel> {
     );
   }
 
-  Widget construccionBotonNivel(
-      String medalla, int nivel, double dimensionBoton, Color colorBoton) {
+  Widget construccionBotonNivel(String medalla, int nivel, double dimensionBoton, Color colorBoton) {
     return Container(
       width: dimensionBoton,
       height: dimensionBoton,
@@ -139,8 +143,8 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         splashColor: Colors.white54,
         child: Image(
           image: AssetImage(medalla),
-          height: dimensionBoton-20,
-          width: dimensionBoton-20,
+          height: dimensionBoton - 20,
+          width: dimensionBoton - 20,
         ),
         onPressed: () {
           _accionSeleccionNivel(nivel);
@@ -184,16 +188,36 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   // Método Contenido Gráfico
   @override
   Widget build(BuildContext contexto) {
-    return Center(
+    // Contenedor Selector Nivel: Botones + Podio
+    final contenedorNivel = Center(
       child: Container(
         padding: EdgeInsets.all(20),
         child: Column(
-          children: [
-            botonesNivel(),
-            podio(),
-          ],
+          children: [botonesNivel(), podio()],
         ),
       ),
     );
+
+    // Encabezado Carta
+    final textoValor = valor ?? 'Sin seleccionar';
+    final encabezado = Container(
+      color: colorAzulOpaco,
+      padding: EdgeInsets.all(14),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text('Nivel', style: estiloTituloBarra), Text(textoValor, style: estiloSubtituloBarra)],
+      ),
+    );
+
+    // Carta: Encabezado + Contenido Selector
+    final carta = Card(
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      color: Colors.white,
+      child: Column(children: [encabezado, contenedorNivel]),
+    );
+
+    return Container(width: 340, padding: EdgeInsets.symmetric(horizontal: 30), child: carta);
   }
 }

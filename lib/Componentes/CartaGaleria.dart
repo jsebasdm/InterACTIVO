@@ -15,17 +15,18 @@ class CartaGaleria extends StatelessWidget {
   final Registro registro;
   final double opacidad;
   final Function clickEliminar;
+  final bool enGaleria;
 
   // Constructor
-  CartaGaleria({this.registro, this.clickEliminar, this.opacidad = 1});
+  CartaGaleria({this.registro, this.clickEliminar, this.opacidad = 1, this.enGaleria = true});
 
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     // Unión Contenido Carta
     final listaElementosCarta = [
-      EncabezadoCarta(registro),
-      CuerpoCarta(registro),
-      InformacionCarta(registro: registro, clickEliminar: clickEliminar),
+      EncabezadoCarta(registro: registro, enGaleria: enGaleria),
+      CuerpoCarta(registro: registro, enGaleria: enGaleria),
+      if(enGaleria) InformacionCarta(registro: registro, clickEliminar: clickEliminar),
     ];
     final columnaCarta = Column(
       mainAxisSize: MainAxisSize.min,
@@ -44,19 +45,22 @@ class CartaGaleria extends StatelessWidget {
 class EncabezadoCarta extends StatelessWidget {
   // Atributos
   final Registro registro;
+  final bool enGaleria;
 
   // Constructor
-  EncabezadoCarta(this.registro);
+  EncabezadoCarta({this.registro, this.enGaleria});
 
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
+    final estilo = (enGaleria) ? estiloBotonIngresar : estiloTituloBarra;
+    final double alturaIcono = (enGaleria) ? 30 : 22;
     final titulo =
-        Expanded(child: Text(registro.habilidad.nombre, style: estiloBotonIngresar, textAlign: TextAlign.center));
-    final iconoArea = Image(image: AssetImage(registro.habilidad.area.rutaIconoBlanco), height: 30);
+    Expanded(child: Text(registro.habilidad.nombre, style: estilo, textAlign: TextAlign.center));
+    final iconoArea = Image(image: AssetImage(registro.habilidad.area.rutaIconoBlanco), height: alturaIcono);
     return Container(
       decoration: BoxDecoration(color: colorAzulOpaco),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Row(children: [iconoArea, titulo]),
+      child: Row(children: [iconoArea, SizedBox(width: 5), titulo]),
     );
   }
 }
@@ -65,9 +69,10 @@ class EncabezadoCarta extends StatelessWidget {
 class CuerpoCarta extends StatelessWidget {
   // Atributos
   final Registro registro;
+  final bool enGaleria;
 
   // Constructor
-  CuerpoCarta(this.registro);
+  CuerpoCarta({this.registro, this.enGaleria});
 
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
@@ -76,12 +81,15 @@ class CuerpoCarta extends StatelessWidget {
     final contenedorLogoSkill = Container(child: imagenSkill, padding: EdgeInsets.all(20));
 
     // Ícono Medalla
-    final imagenMedalla = Image(image: AssetImage(registro.nivel.rutaImagen), width: 32);
-    final filaMedalla = Row(children: [imagenMedalla], mainAxisAlignment: MainAxisAlignment.end);
-    final contenedorMedalla = Container(child: filaMedalla, padding: EdgeInsets.all(10));
+    Widget contenedorMedalla;
+    if (enGaleria) {
+      final imagenMedalla = Image(image: AssetImage(registro.nivel.rutaImagen), width: 32);
+      final filaMedalla = Row(children: [imagenMedalla], mainAxisAlignment: MainAxisAlignment.end);
+      contenedorMedalla = Container(child: filaMedalla, padding: EdgeInsets.all(10));
+    }
 
     // Cuerpo Carta
-    return Expanded(child: Stack(children: [contenedorLogoSkill, contenedorMedalla]));
+    return Expanded(child: Stack(children: [contenedorLogoSkill, if(enGaleria) contenedorMedalla]));
   }
 }
 

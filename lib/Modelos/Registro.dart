@@ -25,25 +25,25 @@ class Registro {
 
     // Registros de Prueba Desarrollo
     fecha = DateTime.utc(2018, DateTime.january, 10);
-    lista.add(Registro(habilidad: skills['HTML'], nivel: Nivel.alto, version: 'HTML 5', fecha: fecha));
+    lista.add(Registro(habilidad: skills['HTML'], nivel: Nivel.alto, version: 'v5.0', fecha: fecha));
 
     fecha = DateTime.utc(2018, DateTime.june, 21);
-    lista.add(Registro(habilidad: skills['CSS'], nivel: Nivel.bajo, version: 'CSS 3', fecha: fecha));
+    lista.add(Registro(habilidad: skills['CSS'], nivel: Nivel.bajo, version: 'v3', fecha: fecha));
 
     fecha = DateTime.utc(2018, DateTime.october, 7);
-    lista.add(Registro(habilidad: skills['JavaScript'], nivel: Nivel.medio, version: 'ECMAScript 2016', fecha: fecha));
+    lista.add(Registro(habilidad: skills['JavaScript'], nivel: Nivel.medio, version: 'v6.0', fecha: fecha));
 
     fecha = DateTime.utc(2019, DateTime.may, 25);
-    lista.add(Registro(habilidad: skills['PHP'], nivel: Nivel.alto, version: 'PHP 7', fecha: fecha));
+    lista.add(Registro(habilidad: skills['PHP'], nivel: Nivel.alto, version: 'v6.0', fecha: fecha));
 
-    lista.add(Registro(habilidad: skills['Flutter'], nivel: Nivel.bajo, version: 'Flutter 1.9'));
+    lista.add(Registro(habilidad: skills['Flutter'], nivel: Nivel.bajo, version: 'v1.9'));
 
     // Registros de Prueba Infraestructura
     fecha = DateTime.utc(2017, DateTime.july, 9);
     lista.add(Registro(habilidad: skills['Linux'], nivel: Nivel.bajo, version: 'Ubuntu', fecha: fecha));
 
     fecha = DateTime.utc(2019, DateTime.april, 22);
-    lista.add(Registro(habilidad: skills['Cisco'], nivel: Nivel.medio, version: 'CCNA 1', fecha: fecha));
+    lista.add(Registro(habilidad: skills['Cisco'], nivel: Nivel.medio, version: 'v7.0', fecha: fecha));
 
     // Retornar Lista Registros
     return lista;

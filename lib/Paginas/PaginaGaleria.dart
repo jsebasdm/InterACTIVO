@@ -121,7 +121,7 @@ class EstadoGaleria extends State<Galeria> {
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     // Retorno Lista Vacía
-    if (listaRegistros.isEmpty) return Image.asset('assets/imagenes/otros/ListaVacia.jpg');
+    if (listaRegistros.isEmpty) return Image.asset('assets/imagenes/otros/ListaVacia.png');
 
     // Retorno Única Carta
     final alturaCarta = MediaQuery.of(context).size.height * fraccionAltoCarta;

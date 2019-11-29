@@ -19,6 +19,6 @@ class Area {
         rutaIconoBlanco = rutaBase + 'IconoInfraestructuraBlanco.png';
 
   // Objetos Constantes
-  static get desarollo => Area._areaDesarrollo();
+  static get desarrollo => Area._areaDesarrollo();
   static get infraestructura => Area._areaInfraestructura();
 }
