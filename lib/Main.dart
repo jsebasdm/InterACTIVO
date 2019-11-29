@@ -4,22 +4,26 @@ import 'package:flutter/services.dart';
 
 // Archivos Externos
 import 'package:interactivo/Utilidades/Constantes.dart';
+import 'package:interactivo/Modelos/Registro.dart';
+
+// Variables Globales
+final listaRegistros = Registro.obtenerListaPrueba();
 
 // Función Principal
 void main() => runApp(Aplicacion());
 
-// Clase Aplicación
+// Clase Principal
 class Aplicacion extends StatelessWidget {
   // Método Contenido Gráfico
-  Widget build(BuildContext context) {
-    // Color Barra de Estado
+  Widget build(BuildContext contexto) {
+    // Barra Estado
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: colorGrisAzulado));
 
     // Aplicación
     return MaterialApp(
-      theme: ThemeData(primaryColor: colorAzulOpaco, cursorColor: colorAzulOpaco),
+      theme: ThemeData(primaryColor: colorAzulOpaco, cursorColor: colorAzulOpaco, fontFamily: 'Roboto'),
       debugShowCheckedModeBanner: false,
-      title: 'Pruebas Reto',
+      title: 'InterActivo',
       initialRoute: 'Splash',
       routes: mapaRutas,
     );

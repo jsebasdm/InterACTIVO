@@ -9,11 +9,12 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  font_awesome_flutter: 8.5.0
-  line_icons: ^0.2.0
   flutter_svg: ^0.15.0
   after_layout: ^1.0.7
+  line_icons: ^0.2.0
+  carousel_slider: ^1.3.1
   flare_flutter: ^1.7.3
+  fl_chart: ^0.4.3
 
 dev_dependencies:
   flutter_test:
@@ -22,8 +23,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/imagenes/
     - assets/graficos/
     - assets/animaciones/
-    - assets/imagenes/imagenespodio/
+    - assets/imagenes/iconosAreas/
+    - assets/imagenes/logosHabilidades/
     - assets/imagenes/medallas/
+    - assets/imagenes/otros/
+    - assets/imagenes/podio/

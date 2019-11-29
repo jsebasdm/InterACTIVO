@@ -10,6 +10,14 @@ import 'package:interactivo/Utilidades/Constantes.dart';
 
 // Clase Página Splash
 class PaginaSplash extends StatefulWidget {
+  // Atributos
+  final String nombreGraficoSuperior;
+  final String nombreGraficoInferior;
+
+  // Constructor
+  PaginaSplash(this.nombreGraficoSuperior, this.nombreGraficoInferior);
+
+  // Método Crear Estado
   EstadoPaginaSplash createState() => EstadoPaginaSplash();
 }
 
@@ -40,7 +48,6 @@ class EstadoPaginaSplash extends State<PaginaSplash>
   }
 
   // Método Inicialización
-  @override
   void initState() {
     super.initState();
     controlador = AnimationController(vsync: this, duration: Duration(seconds: 3));
@@ -49,7 +56,6 @@ class EstadoPaginaSplash extends State<PaginaSplash>
   }
 
   // Método Construcción Inicial
-  @override
   void afterFirstLayout(BuildContext context) {
     animacion.addListener(actualizarEstado);
     mostrarAbanico();
@@ -57,19 +63,17 @@ class EstadoPaginaSplash extends State<PaginaSplash>
   }
 
   // Método Finalización
-  @override
-  dispose() {
+  void dispose() {
     controlador?.dispose();
     super.dispose();
   }
 
   // Método Contenido Gráfico
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext contexto) {
     final columnaElementos = Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      if (abanicoVisible) ConjuntoAbanicoLogo(superior: true),
+      if (abanicoVisible) ConjuntoAbanicoLogo(superior: true, nombreGrafico: widget.nombreGraficoSuperior),
       SloganCentral(altura: animacion.value),
-      if (abanicoVisible) ConjuntoAbanicoLogo(superior: false),
+      if (abanicoVisible) ConjuntoAbanicoLogo(superior: false, nombreGrafico: widget.nombreGraficoInferior),
     ]);
     return Scaffold(body: SafeArea(child: GestureDetector(child: columnaElementos, onTap: navegarPaginaIngreso)));
   }
@@ -79,8 +83,10 @@ class EstadoPaginaSplash extends State<PaginaSplash>
 class SloganCentral extends StatelessWidget {
   // Atributos
   final double altura;
+
   // Constructor
   SloganCentral({this.altura});
+
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     return Container(
@@ -96,6 +102,7 @@ class Recortador extends CustomClipper<Path> {
   // Atributos
   final bool orientacion;
   final double margen = 30;
+
   // Constructor
   Recortador(this.orientacion);
 
@@ -123,9 +130,11 @@ class FranjaAbanico extends StatelessWidget {
   // Atributos
   final Color color;
   final bool orientacionRecorte;
+
   // Constructor
   FranjaAbanico(double luminosidad, this.orientacionRecorte)
       : color = colorHslAbanico.withLightness(luminosidad).toColor();
+
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     final borde = Border(bottom: BorderSide(width: 1, color: Colors.white));
@@ -138,11 +147,14 @@ class FranjaAbanico extends StatelessWidget {
 class ColumnaAbanico extends StatelessWidget {
   // Atributos
   final List<ValorRango> listaIntensidades;
+
   // Constructor
   ColumnaAbanico({bool ubicacion})
       : listaIntensidades = ValorRango.crearListaRango(totalValores: 8, limiteA: 0.5, limiteB: 0.9, orden: ubicacion);
+
   // Método Mapeo Franjas
   Widget mapeoFranjas(ValorRango luminosidad) => FranjaAbanico(luminosidad.valor, luminosidad.esIndicePar);
+
   // Método Contenido Gráfico
   Widget build(BuildContext contexto) {
     final listaFranjas = listaIntensidades.map(mapeoFranjas).toList();
@@ -152,16 +164,20 @@ class ColumnaAbanico extends StatelessWidget {
 
 // Clase Conjunto: Abanico + Logo
 class ConjuntoAbanicoLogo extends StatelessWidget {
+  // Constantes
+  static const String rutaGraficos = 'assets/graficos/';
+
   // Atributos
   final bool superior;
-  final String rutaGraficos = 'assets/graficos/';
+  final String nombreGrafico;
+
   // Constructor
-  ConjuntoAbanicoLogo({this.superior});
+  ConjuntoAbanicoLogo({this.superior, this.nombreGrafico});
+
   // Método Contenido Gráfico
-  @override
   Widget build(BuildContext contexto) {
     final posicionLogo = (superior) ? Alignment.bottomCenter : Alignment.topCenter;
-    final imagenLogo = rutaGraficos + ((superior) ? 'LogoInter.svg' : 'LogoActivo.svg');
+    final imagenLogo = rutaGraficos + nombreGrafico + '.svg';
     final contenedorLogo = Container(alignment: posicionLogo, child: SvgPicture.asset(imagenLogo, width: 150));
     return Expanded(child: Stack(children: [ColumnaAbanico(ubicacion: superior), contenedorLogo]));
   }

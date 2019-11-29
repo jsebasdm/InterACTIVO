@@ -14,9 +14,9 @@ class SeleccionNivel extends StatefulWidget {
 // ELEMENTOS GRÁFICOS
 // Contenido Principal de Página
 class _SeleccionNivel extends State<SeleccionNivel> {
-  String imagen1 = 'assets/imagenes/imagenespodio/Podio1Inactivo.jpg';
-  String imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
-  String imagen3 = 'assets/imagenes/imagenespodio/Podio3Inactivo.jpg';
+  String imagen1 = 'assets/imagenes/podio/Podio1Inactivo.jpg';
+  String imagen2 = 'assets/imagenes/podio/Podio2Inactivo.jpg';
+  String imagen3 = 'assets/imagenes/podio/Podio3Inactivo.jpg';
   double opacidadNivel1 = 0.0;
   double opacidadNivel2 = 0.0;
   double opacidadNivel3 = 0.0;
@@ -29,39 +29,51 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   double dimensionBotonOro = 50.0;
   double dimensionBotonPlata = 50.0;
   double dimensionBotonBronce = 50.0;
+  Color colorBotonOro = Colors.blueGrey[50];
+  Color colorBotonPlata = Colors.blueGrey[50];
+  Color colorBotonBronce = Colors.blueGrey[50];
 
-  void _accionSeleccionNivel(int level) {
+  void _accionSeleccionNivel(int nivel) {
     setState(() {
-      if (level == 1) {
-        imagen1 = 'assets/imagenes/imagenespodio/Podio1Activo.jpg';
-        imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
-        imagen3 = 'assets/imagenes/imagenespodio/Podio3Inactivo.jpg';
+      if (nivel == 1) {
+        imagen1 = 'assets/imagenes/podio/Podio1Activo.jpg';
+        imagen2 = 'assets/imagenes/podio/Podio2Inactivo.jpg';
+        imagen3 = 'assets/imagenes/podio/Podio3Inactivo.jpg';
         opacidadNivel1 = 1.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 0.0;
         dimensionBotonOro = 60.0;
         dimensionBotonPlata = 50.0;
         dimensionBotonBronce = 50.0;
-      } else if (level == 2) {
-        imagen1 = 'assets/imagenes/imagenespodio/Podio12Activo.jpg';
-        imagen2 = 'assets/imagenes/imagenespodio/Podio2Activo.jpg';
-        imagen3 = 'assets/imagenes/imagenespodio/Podio3Inactivo.jpg';
+        colorBotonOro = colorAzulOpaco;
+        colorBotonPlata = Colors.blueGrey[50];
+        colorBotonBronce = Colors.blueGrey[50];
+      } else if (nivel == 2) {
+        imagen1 = 'assets/imagenes/podio/Podio12Activo.jpg';
+        imagen2 = 'assets/imagenes/podio/Podio2Activo.jpg';
+        imagen3 = 'assets/imagenes/podio/Podio3Inactivo.jpg';
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 1.0;
         opacidadNivel3 = 0.0;
         dimensionBotonOro = 50.0;
         dimensionBotonPlata = 60.0;
         dimensionBotonBronce = 50.0;
-      } else if (level == 3) {
-        imagen1 = 'assets/imagenes/imagenespodio/Podio13Activo.jpg';
-        imagen2 = 'assets/imagenes/imagenespodio/Podio2Inactivo.jpg';
-        imagen3 = 'assets/imagenes/imagenespodio/Podio3Activo.jpg';
+        colorBotonOro = Colors.blueGrey[50];
+        colorBotonPlata = colorAzulOpaco;
+        colorBotonBronce = Colors.blueGrey[50];
+      } else if (nivel == 3) {
+        imagen1 = 'assets/imagenes/podio/Podio13Activo.jpg';
+        imagen2 = 'assets/imagenes/podio/Podio2Inactivo.jpg';
+        imagen3 = 'assets/imagenes/podio/Podio3Activo.jpg';
         opacidadNivel1 = 0.0;
         opacidadNivel2 = 0.0;
         opacidadNivel3 = 1.0;
         dimensionBotonOro = 50.0;
         dimensionBotonPlata = 50.0;
         dimensionBotonBronce = 60.0;
+        colorBotonOro = Colors.blueGrey[50];
+        colorBotonPlata = Colors.blueGrey[50];
+        colorBotonBronce = colorAzulOpaco;
       }
     });
   }
@@ -116,13 +128,13 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   }
 
   Widget construccionBotonNivel(
-      String medalla, int nivel, double dimensionBoton) {
+      String medalla, int nivel, double dimensionBoton, Color colorBoton) {
     return Container(
       width: dimensionBoton,
       height: dimensionBoton,
       child: MaterialButton(
         elevation: 10.0,
-        color: colorAzulOpaco,
+        color: colorBoton,
         shape: CircleBorder(),
         splashColor: Colors.white54,
         child: Image(
@@ -159,11 +171,11 @@ class _SeleccionNivel extends State<SeleccionNivel> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          construccionBotonNivel(medallaPlata, 2, dimensionBotonPlata),
+          construccionBotonNivel(medallaPlata, 2, dimensionBotonPlata, colorBotonPlata),
           SizedBox(width: 20),
-          construccionBotonNivel(medallaOro, 1, dimensionBotonOro),
+          construccionBotonNivel(medallaOro, 1, dimensionBotonOro, colorBotonOro),
           SizedBox(width: 20),
-          construccionBotonNivel(medallaBronce, 3, dimensionBotonBronce),
+          construccionBotonNivel(medallaBronce, 3, dimensionBotonBronce, colorBotonBronce),
         ],
       ),
     );
@@ -172,20 +184,16 @@ class _SeleccionNivel extends State<SeleccionNivel> {
   // Método Contenido Gráfico
   @override
   Widget build(BuildContext contexto) {
-    return ListView(
-      children: <Widget>[
-        Center(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: <Widget>[
-                botonesNivel(),
-                podio(),
-              ],
-            ),
-          ),
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            botonesNivel(),
+            podio(),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
