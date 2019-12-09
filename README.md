@@ -10,11 +10,11 @@ Aplicación de Reto de ExperTIC, con InterGrupo como empresa mentora
 
 ### Eliminar y Agregar Habilidades
 
-![Eliminar y Agregar habilidades](GIFsProyectoInterACTIVO/GIF2-Eliminar&Agregar.gif)  
+![Eliminar y Agregar habilidades](GIFsProyectoInterACTIVO/GIF2-EliminarAgregar.gif)  
 
 ### Lista de Habilidades y Salir
 
-![Lista de habilidades y Salir](GIFsProyectoInterACTIVO/GIF3-Lista&Salir.gif)
+![Lista de habilidades y Salir](GIFsProyectoInterACTIVO/GIF3-ListaSalir.gif)
 
 #### Getting Started
 
