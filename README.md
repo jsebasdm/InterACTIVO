@@ -1,8 +1,16 @@
-# interactivo
+# InterACTIVO
 
 Aplicación de Reto de ExperTIC, con InterGrupo como empresa mentora
 
-## Getting Started
+## Visualización gráfica de la Interacción de la aplicación
+
+![Inicio de Sesión](GIFsProyectoInterACTIVO/GIF1-Login.gif)
+
+![Eliminar y Agregar habilidades](GIFsProyectoInterACTIVO/GIF2-Eliminar&Agregar.gif)
+
+![Lista de habilidades y Salir](GIFsProyectoInterACTIVO/GIF3-Lista&Salir.gif)
+
+### Getting Started
 
 This project is a starting point for a Flutter application.
 
