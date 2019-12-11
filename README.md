@@ -1,12 +1,13 @@
 # InterACTIVO
+<img src= "https://i.imgur.com/L2bnMe8.png" width="150"> <img src= "https://i.imgur.com/2lDqCeO.png" width="146.3"> <img src= "https://i.imgur.com/4710l9K.png" width="150">
 
-Aplicación de Reto de ExperTIC, con InterGrupo como empresa mentora
+>Aplicación del Reto ExperTIC, con InterGrupo como empresa mentora
 
 ## Desarrolladores
 
-#### César Luis Alzate Suárez - cesar_luis2193@hotmail.com
-#### Juan Sebastian Durango Mora - sebas57@hotmail.es
-#### Christian Bazurto - cristianbg71@gmail.com
+- César Luis Alzate Suárez - cesar_luis2193@hotmail.com
+- Juan Sebastian Durango Mora - sebas57@hotmail.es
+- Christian Bazurto - cristianbg71@gmail.com
 
 ## Visualización gráfica de la Interacción de la aplicación
 
