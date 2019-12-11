@@ -1,5 +1,4 @@
 # InterACTIVO
-<img src= "https://i.imgur.com/L2bnMe8.png" width="150"> <img src= "https://i.imgur.com/2lDqCeO.png" width="146.3"> <img src= "https://i.imgur.com/4710l9K.png" width="150">
 
 >Aplicación del Reto ExperTIC, con InterGrupo como empresa mentora
 
